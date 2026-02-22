@@ -39,7 +39,7 @@ jobs:
                       ${{ secrets.DOCKERHUB_USERNAME }}/api:latest
                       ${{ secrets.DOCKERHUB_USERNAME }}/api:${{ env.VERSION }}
 
-            - name: Execute remote SSH commands using password
+            - name: Execute remote SSH commands
               uses: appleboy/ssh-action@v1
               with:
                   host: ${{ secrets.HOST }}
