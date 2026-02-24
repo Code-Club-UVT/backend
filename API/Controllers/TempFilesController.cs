@@ -11,7 +11,8 @@ public class TempFilesController(
     ) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> Post(IFormFile file)
+    [Route("{homeworkId:guid}")]
+    public async Task<IActionResult> Post([FromRoute] Guid homeworkId, IFormFile file)
     {
         if (file.Length == 0)
             return BadRequest("No file uploaded.");
@@ -34,7 +35,8 @@ public class TempFilesController(
             Id = fileId,
             FileName = fileNameWithoutExtension,
             Extension = extension,
-            SizeBytes = file.Length
+            SizeBytes = file.Length,
+            HomeworkId = homeworkId
         };
 
         dbContext.TempFiles.Add(tempFile);

@@ -11,4 +11,5 @@ public class PostgresDbContext(DbContextOptions<PostgresDbContext> options) : Db
     }
 
     public DbSet<TempFile> TempFiles { get; set; }
+    public DbSet<TempHomework> TempHomeworks { get; set; }
 }

@@ -9,4 +9,7 @@ public class TempFile
     [StringLength(8)] public required string Extension { get; init; }
     public required long SizeBytes { get; init; }
     public DateTime StoredAt { get; init; } = DateTime.UtcNow;
+
+    public Guid HomeworkId { get; init; }
+    public TempHomework? Homework { get; init; }
 }
