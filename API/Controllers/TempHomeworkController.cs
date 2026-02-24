@@ -25,7 +25,7 @@ public class TempHomeworkController(
     [HttpPost]
     public async Task<IActionResult> Post([FromForm] string title, [FromForm] string description)
     {
-        long nextNumber = dbContext.TempFiles.Count() + 1;
+        long nextNumber = dbContext.TempHomeworks.Count() + 1;
 
         TempHomework tempHomework = new TempHomework
         {
