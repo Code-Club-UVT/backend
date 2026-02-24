@@ -7,13 +7,13 @@ namespace API.Extensions;
 
 public static class DbContextsExtensions
 {
-    public static IServiceCollection AddDbContexts(this IServiceCollection services)
+    public static IServiceCollection AddDbContexts(this IServiceCollection services, IConfiguration configuration)
     {
-        IOptions<DatabaseOptions> databaseOptions = services.BuildServiceProvider().GetRequiredService<IOptions<DatabaseOptions>>();
+        DatabaseOptions? databaseOptions = configuration.GetSection(DatabaseOptions.SectionName).Get<DatabaseOptions>();
 
         services.AddDbContext<PostgresDbContext>(options =>
         {
-            options.UseNpgsql(databaseOptions.Value.Postgres);
+            options.UseNpgsql(databaseOptions?.Postgres);
         });
 
         return services;

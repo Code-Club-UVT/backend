@@ -6,6 +6,12 @@
 # dotenv files
 .env
 
+# appsettings files
+appsettings*.json
+
+# Uploads folder for user generated content
+uploads/
+
 # User-specific files
 *.rsuser
 *.suo

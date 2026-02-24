@@ -5,10 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
 
 builder.Services.AddOptions(builder.Configuration);
-builder.Services.AddDbContexts();
+builder.Services.AddDbContexts(builder.Configuration);
+builder.Services.AddAuthenticationServices(builder.Configuration);
+builder.Services.AddAuthorizationServices();
+builder.Services.AddRequestContext();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
@@ -19,7 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
