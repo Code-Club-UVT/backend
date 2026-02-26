@@ -1,7 +1,7 @@
 ﻿using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.DatabaseContexts;
+namespace API.Database;
 
 public class PostgresDbContext(DbContextOptions<PostgresDbContext> options) : DbContext(options)
 {
@@ -12,4 +12,5 @@ public class PostgresDbContext(DbContextOptions<PostgresDbContext> options) : Db
 
     public DbSet<TempFile> TempFiles { get; set; }
     public DbSet<TempHomework> TempHomeworks { get; set; }
+    public DbSet<TempPassword> TempPasswords { get; set; }
 }

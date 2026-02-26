@@ -1,13 +1,13 @@
-﻿using API.DatabaseContexts;
+﻿using API.Database;
 using API.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace API.Extensions;
 
-public static class DbContextsExtensions
+public static class DatabaseExtensions
 {
-    public static IServiceCollection AddDbContexts(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDatabases(this IServiceCollection services, IConfiguration configuration)
     {
         DatabaseOptions? databaseOptions = configuration.GetSection(DatabaseOptions.SectionName).Get<DatabaseOptions>();
 

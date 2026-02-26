@@ -1,4 +1,4 @@
-﻿using API.DatabaseContexts;
+﻿using API.Database;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +23,12 @@ public class TempHomeworkController(
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromForm] string title, [FromForm] string description)
+    public async Task<IActionResult> Post([FromForm] string title, [FromForm] string description, [FromForm] string password)
     {
+        bool isPasswordCorrect = dbContext.TempPasswords.Select(p => p.Password).Contains(password);
+        if (!isPasswordCorrect)
+            return Unauthorized();
+
         long nextNumber = dbContext.TempHomeworks.Count() + 1;
 
         TempHomework tempHomework = new TempHomework

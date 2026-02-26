@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 
 builder.Services.AddOptions(builder.Configuration);
-builder.Services.AddDbContexts(builder.Configuration);
+builder.Services.AddDatabases(builder.Configuration);
 builder.Services.AddAuthenticationServices(builder.Configuration);
 builder.Services.AddAuthorizationServices();
 builder.Services.AddRequestContext();
